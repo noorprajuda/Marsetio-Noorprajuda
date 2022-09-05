@@ -1,21 +1,239 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Octokit, App } from "octokit";
+import { useState } from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Home: NextPage = () => {
-  // const octokit = new Octokit({
-  //   auth: process.env.GITHUB_PAT
-  // })
-  
-  // octokit.request('GET /orgs/{org}/repos', {
-  //   org: 'ORG'
-  // })
+  const [repos, setRepos] = useState([ {
+    "id": 531415737,
+    "node_id": "R_kgDOH6zCuQ",
+    "name": "barito",
+    "full_name": "noorprajuda/barito",
+    "private": true,
+    "owner": {
+        "login": "noorprajuda",
+        "id": 22234154,
+        "node_id": "MDQ6VXNlcjIyMjM0MTU0",
+        "avatar_url": "https://avatars.githubusercontent.com/u/22234154?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/noorprajuda",
+        "html_url": "https://github.com/noorprajuda",
+        "followers_url": "https://api.github.com/users/noorprajuda/followers",
+        "following_url": "https://api.github.com/users/noorprajuda/following{/other_user}",
+        "gists_url": "https://api.github.com/users/noorprajuda/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/noorprajuda/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/noorprajuda/subscriptions",
+        "organizations_url": "https://api.github.com/users/noorprajuda/orgs",
+        "repos_url": "https://api.github.com/users/noorprajuda/repos",
+        "events_url": "https://api.github.com/users/noorprajuda/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/noorprajuda/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "html_url": "https://github.com/noorprajuda/barito",
+    "description": null,
+    "fork": false,
+    "url": "https://api.github.com/repos/noorprajuda/barito",
+    "forks_url": "https://api.github.com/repos/noorprajuda/barito/forks",
+    "keys_url": "https://api.github.com/repos/noorprajuda/barito/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/noorprajuda/barito/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/noorprajuda/barito/teams",
+    "hooks_url": "https://api.github.com/repos/noorprajuda/barito/hooks",
+    "issue_events_url": "https://api.github.com/repos/noorprajuda/barito/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/noorprajuda/barito/events",
+    "assignees_url": "https://api.github.com/repos/noorprajuda/barito/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/noorprajuda/barito/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/noorprajuda/barito/tags",
+    "blobs_url": "https://api.github.com/repos/noorprajuda/barito/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/noorprajuda/barito/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/noorprajuda/barito/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/noorprajuda/barito/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/noorprajuda/barito/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/noorprajuda/barito/languages",
+    "stargazers_url": "https://api.github.com/repos/noorprajuda/barito/stargazers",
+    "contributors_url": "https://api.github.com/repos/noorprajuda/barito/contributors",
+    "subscribers_url": "https://api.github.com/repos/noorprajuda/barito/subscribers",
+    "subscription_url": "https://api.github.com/repos/noorprajuda/barito/subscription",
+    "commits_url": "https://api.github.com/repos/noorprajuda/barito/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/noorprajuda/barito/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/noorprajuda/barito/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/noorprajuda/barito/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/noorprajuda/barito/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/noorprajuda/barito/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/noorprajuda/barito/merges",
+    "archive_url": "https://api.github.com/repos/noorprajuda/barito/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/noorprajuda/barito/downloads",
+    "issues_url": "https://api.github.com/repos/noorprajuda/barito/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/noorprajuda/barito/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/noorprajuda/barito/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/noorprajuda/barito/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/noorprajuda/barito/labels{/name}",
+    "releases_url": "https://api.github.com/repos/noorprajuda/barito/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/noorprajuda/barito/deployments",
+    "created_at": "2022-09-01T07:44:57Z",
+    "updated_at": "2022-09-02T02:58:12Z",
+    "pushed_at": "2022-09-01T07:46:07Z",
+    "git_url": "git://github.com/noorprajuda/barito.git",
+    "ssh_url": "git@github.com:noorprajuda/barito.git",
+    "clone_url": "https://github.com/noorprajuda/barito.git",
+    "svn_url": "https://github.com/noorprajuda/barito",
+    "homepage": null,
+    "size": 1,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "JavaScript",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 0,
+    "license": null,
+    "allow_forking": true,
+    "is_template": false,
+    "web_commit_signoff_required": false,
+    "topics": [],
+    "visibility": "private",
+    "forks": 0,
+    "open_issues": 0,
+    "watchers": 0,
+    "default_branch": "main",
+    "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+    }
+},
+{
+    "id": 531104812,
+    "node_id": "R_kgDOH6gELA",
+    "name": "beever",
+    "full_name": "noorprajuda/beever",
+    "private": false,
+    "owner": {
+        "login": "noorprajuda",
+        "id": 22234154,
+        "node_id": "MDQ6VXNlcjIyMjM0MTU0",
+        "avatar_url": "https://avatars.githubusercontent.com/u/22234154?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/noorprajuda",
+        "html_url": "https://github.com/noorprajuda",
+        "followers_url": "https://api.github.com/users/noorprajuda/followers",
+        "following_url": "https://api.github.com/users/noorprajuda/following{/other_user}",
+        "gists_url": "https://api.github.com/users/noorprajuda/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/noorprajuda/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/noorprajuda/subscriptions",
+        "organizations_url": "https://api.github.com/users/noorprajuda/orgs",
+        "repos_url": "https://api.github.com/users/noorprajuda/repos",
+        "events_url": "https://api.github.com/users/noorprajuda/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/noorprajuda/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "html_url": "https://github.com/noorprajuda/beever",
+    "description": null,
+    "fork": false,
+    "url": "https://api.github.com/repos/noorprajuda/beever",
+    "forks_url": "https://api.github.com/repos/noorprajuda/beever/forks",
+    "keys_url": "https://api.github.com/repos/noorprajuda/beever/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/noorprajuda/beever/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/noorprajuda/beever/teams",
+    "hooks_url": "https://api.github.com/repos/noorprajuda/beever/hooks",
+    "issue_events_url": "https://api.github.com/repos/noorprajuda/beever/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/noorprajuda/beever/events",
+    "assignees_url": "https://api.github.com/repos/noorprajuda/beever/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/noorprajuda/beever/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/noorprajuda/beever/tags",
+    "blobs_url": "https://api.github.com/repos/noorprajuda/beever/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/noorprajuda/beever/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/noorprajuda/beever/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/noorprajuda/beever/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/noorprajuda/beever/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/noorprajuda/beever/languages",
+    "stargazers_url": "https://api.github.com/repos/noorprajuda/beever/stargazers",
+    "contributors_url": "https://api.github.com/repos/noorprajuda/beever/contributors",
+    "subscribers_url": "https://api.github.com/repos/noorprajuda/beever/subscribers",
+    "subscription_url": "https://api.github.com/repos/noorprajuda/beever/subscription",
+    "commits_url": "https://api.github.com/repos/noorprajuda/beever/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/noorprajuda/beever/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/noorprajuda/beever/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/noorprajuda/beever/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/noorprajuda/beever/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/noorprajuda/beever/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/noorprajuda/beever/merges",
+    "archive_url": "https://api.github.com/repos/noorprajuda/beever/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/noorprajuda/beever/downloads",
+    "issues_url": "https://api.github.com/repos/noorprajuda/beever/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/noorprajuda/beever/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/noorprajuda/beever/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/noorprajuda/beever/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/noorprajuda/beever/labels{/name}",
+    "releases_url": "https://api.github.com/repos/noorprajuda/beever/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/noorprajuda/beever/deployments",
+    "created_at": "2022-08-31T13:48:26Z",
+    "updated_at": "2022-08-31T15:15:00Z",
+    "pushed_at": "2022-08-31T15:13:48Z",
+    "git_url": "git://github.com/noorprajuda/beever.git",
+    "ssh_url": "git@github.com:noorprajuda/beever.git",
+    "clone_url": "https://github.com/noorprajuda/beever.git",
+    "svn_url": "https://github.com/noorprajuda/beever",
+    "homepage": null,
+    "size": 391,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "JavaScript",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 0,
+    "license": null,
+    "allow_forking": true,
+    "is_template": false,
+    "web_commit_signoff_required": false,
+    "topics": [],
+    "visibility": "public",
+    "forks": 0,
+    "open_issues": 0,
+    "watchers": 0,
+    "default_branch": "main",
+    "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+    }
+},])
 
   return (
    <><Navbar/>
-   <div className='container mt-[70px] flex justify-center text-center font-bold text-4xl'>GitHub Repositories List</div></>
+   <div className='container ml-[90px] mt-[70px] flex justify-center text-center font-bold text-4xl'>GitHub Repositories List</div>
+   {repos.map((repo, index)=>{
+    return (
+      <>
+        <div className=" ml-20 my-10 mr-20 p-4 w-[1300px] text-center bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{repo.full_name}</h5>
+          <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">{repo.html_url}</p>
+        </div>  
+      </>
+    )
+   })}
+   <Footer/>
+   </>
   )
 }
 
